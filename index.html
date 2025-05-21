@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PesaDownload - Fast & Secure Mpesa Transactions for Deriv.com</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .bg-primary { background-color: #8B6200; }
+        .text-primary { color: #8B6200; }
+        .border-primary { border-color: #8B6200; }
+        .hover\:bg-primary-dark:hover { background-color: #6B4A00; }
+        .app-preview { box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 30px; overflow: hidden; }
+        .download-btn { transition: all 0.3s ease; }
+        .download-btn:hover { transform: translateY(-5px); }
+        .testimonial-card { transition: all 0.3s ease; }
+        .testimonial-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .feature-icon { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-bottom: 1rem; }
+        .hero-images-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .hero-images {
+            display: flex;
+            overflow-x: hidden;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            gap: 20px;
+        }
+        .hero-images img {
+            width: 250px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            scroll-snap-align: center;
+        }
+        .hero-images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #8B6200;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 10;
+        }
+        .scroll-btn:hover {
+            background-color: rgba(255, 255, 255, 1);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .scroll-btn.left {
+            left: -20px;
+        }
+        .scroll-btn.right {
+            right: -20px;
+        }
+        @media (max-width: 768px) {
+            .hero-images img {
+                width: 200px;
+                height: 360px;
+            }
+            .hero-images-container {
+                max-width: 600px;
+            }
+            .scroll-btn {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        /* Enhanced Header Styles */
+        header {
+            background: linear-gradient(to right, #8B6200, #6B4A00);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+        .logo-container svg {
+            transition: fill 0.3s ease;
+        }
+        .logo-container:hover svg circle {
+            fill: #e08b34;
+        }
+        nav a {
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #f7e2c2;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #f7e2c2;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        /* Enhanced Footer Styles */
+        footer {
+            background: black;
+            color: #d1d1d1;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        .footer-column h3 {
+            color: #f7e2c2;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #8B6200;
+            padding-bottom: 5px;
+        }
+        .footer-column a {
+            color: #d1d1d1;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        .footer-column a:hover {
+            color: #8B6200;
+        }
+        .footer-social a {
+            background-color: #8B6200;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .footer-social a:hover {
+            background-color: #6B4A00;
+            transform: scale(1.1);
+        }
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-column {
+                text-align: center;
+            }
+        }
+        /* How It Works Section */
+        .how-it-works-step {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .how-it-works-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        /* FAQ Section */
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .faq-question {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer.active {
+            max-height: 200px;
+            padding-bottom: 1rem;
+        }
+        /* Stats Section */
+        .stat-card {
+            background: linear-gradient(135deg, #8B6200, #6B4A00);
+            color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+        /* Persistent Top CTA Banner */
+        .cta-top-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #8B6200, #6B4A00);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.5s ease forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        .cta-top-banner .small-note {
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        /* Left-Side CTA Banner */
+        .cta-left-banner {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(90deg, #8B6200, #6B4A00);
+            color: white;
+            padding: 1rem;
+            z-index: 999;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .cta-left-banner.active {
+            opacity: 1;
+            visibility: visible;
+            animation: slideInLeft 0.5s ease forwards;
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%) translateY(-50%); }
+            to { transform: translateX(0) translateY(-50%); }
+        }
+        .cta-left-banner .small-text {
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .cta-left-banner a {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+        @media (max-width: 768px) {
+            .cta-left-banner {
+                top: auto;
+                bottom: 20px;
+                left: 10px;
+                right: 10px;
+                transform: none;
+                border-radius: 10px;
+            }
+            .cta-left-banner.active {
+                animation: slideInBottom 0.5s ease forwards;
+            }
+            @keyframes slideInBottom {
+                from { transform: translateY(100%); }
+                to { transform: translateY(0); }
+            }
+        }
+        /* Back to Top and WhatsApp Buttons */
+        .back-to-top, .whatsapp-btn {
+            position: fixed;
+            right: 20px;
+            background-color: #8B6200;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .back-to-top.active, .whatsapp-btn.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top {
+            bottom: 80px;
+        }
+        .whatsapp-btn {
+            bottom: 20px;
+            background-color: #25D366;
+        }
+        .back-to-top:hover, .whatsapp-btn:hover {
+            background-color: #6B4A00;
+            transform: scale(1.1);
+        }
+        .whatsapp-btn:hover {
+            background-color: #20BD57;
+        }
+        /* Scroll Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Staggered Animation Delays */
+        .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .reveal:nth-child(2) { transition-delay: 0.2s; }
+        .reveal:nth-child(3) { transition-delay: 0.3s; }
+        .reveal:nth-child(4) { transition-delay: 0.4s; }
+        /* Accessibility: Respect Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+
+   <!-- Persistent Top CTA Banner -->
+   
+
+   <!-- Left-Side CTA Banner -->
+   <div class="cta-left-banner" id="ctaLeftBanner">
+       <span class="small-text reveal">Fast & Secure! Try Now!</span>
+       <a href="/Assets/downloads/DownloadPesa.apk" class="bg-white text-primary font-bold rounded-full download-btn hover:bg-gray-100">
+           Download Now <i class="fas fa-arrow-down ml-2"></i>
+       </a>
+   </div>
+
+   <!-- Enhanced Header -->
+   <header class="text-white sticky top-0 z-50">
+       <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+           <div class="logo-container">
+               <svg width="32" height="32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="mr-2">
+                   <circle cx="100" cy="100" r="95" fill="#d46f29"/>
+                   <circle cx="100" cy="100" r="75" fill="#e08b34"/>
+                   <circle cx="100" cy="100" r="55" fill="#c97629"/>
+                   <text x="100" y="125" text-anchor="middle" font-size="90" font-family="Georgia, serif" fill="#f7e2c2" font-weight="bold">P</text>
+               </svg>
+               <h1 class="text-2xl font-bold reveal">PesaDownload</h1>
+           </div>
+           <nav class="hidden md:flex space-x-8">
+               <a href="index.html">Home</a>
+               <a href="#contact">Contact</a>
+               <a href="termsofuse.html">Terms of Use</a>
+               <a href="privacypolicy.html">Privacy Policy</a>
+           </nav>
+           <button class="md:hidden text-white">
+               <i class="fas fa-bars text-2xl"></i>
+           </button>
+       </div>
+   </header>
+
+   <!-- Hero Section -->
+   <section class="bg-primary text-white py-16 md:py-24">
+       <div class="container mx-auto px-4 flex flex-col items-center">
+           <div class="text-center mb-10">
+               <h2 class="text-4xl md:text-5xl font-bold mb-6 reveal">Fast & Secure Mpesa Transactions for Deriv.com</h2>
+               <p class="text-xl mb-8 reveal">PesaDownload revolutionizes your financial transactions with lightning-fast withdrawals and deposits to Deriv.com through Mpesa. Experience seamless money transfers completed in seconds.</p>
+               <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
+                   <a href="/Assets/downloads/DownloadPesa.apk" class="bg-white text-primary font-bold py-3 px-6 rounded-full text-center download-btn hover:bg-gray-100">
+                       Download Now <i class="fas fa-arrow-down ml-2"></i>
+                   </a>
+                   <a href="#" target="_blank" class="border-2 border-white text-white font-bold py-3 px-6 rounded-full text-center download-btn hover:bg-white hover:text-primary">
+                       Open Web App <i class="fas fa-external-link-alt ml-2"></i>
+                   </a>
+               </div>
+           </div>
+           <div class="hero-images-container">
+               <div class="hero-images" id="imageScroller">
+                   <img src="Assets/landing.jpeg" alt="PesaDownload Landing Screen">
+                   <img src="Assets/derivconnect.jpeg" alt="PesaDownload Deriv Connect">
+                   <img src="Assets/home.jpeg" alt="PesaDownload Home Screen">
+                   <img src="Assets/deposit.jpeg" alt="PesaDownload Deposit Screen">
+                   <img src="Assets/withdraw.jpeg" alt="PesaDownload Withdraw Screen">
+                   <img src="Assets/transaction.jpeg" alt="PesaDownload Transactions Screen">
+                   <img src="Assets/support.jpeg" alt="PesaDownload Support Screen">
+                   <img src="Assets/settings.jpeg" alt="PesaDownload Settings Screen">
+               </div>
+               <button class="scroll-btn left" onclick="scrollImages(-1)">
+                   <i class="fas fa-chevron-left"></i>
+               </button>
+               <button class="scroll-btn right" onclick="scrollImages(1)">
+                   <i class="fas fa-chevron-right"></i>
+               </button>
+           </div>
+       </div>
+   </section>
+
+   <!-- Features Section -->
+   <section id="features" class="py-16 bg-white">
+       <div class="container mx-auto px-4">
+           <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 reveal">Why Choose PesaDownload?</h2>
+           <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+               <div class="bg-gray-50 p-8 rounded-xl text-center">
+                   <div class="feature-icon bg-primary text-white mx-auto">
+                       <i class="fas fa-exchange-alt text-2xl"></i>
+                   </div>
+                   <h3 class="text-xl font-bold mb-4 text-gray-800 reveal">Instant Transactions</h3>
+                   <p class="text-gray-600 reveal">Withdraw or deposit funds to your Deriv.com account in seconds through Mpesa. No delays, just instant financial freedom.</p>
+               </div>
+               <div class="bg-gray-50 p-8 rounded-xl text-center">
+                   <div class="feature-icon bg-primary text-white mx-auto">
+                       <i class="fas fa-shield-alt text-2xl"></i>
+                   </div>
+                   <h3 class="text-xl font-bold mb-4 text-gray-800 reveal">Bank-Level Security</h3>
+                   <p class="text-gray-600 reveal">Your transactions are protected with advanced encryption and security protocols, ensuring your money is always safe.</p>
+               </div>
+               <div class="bg-gray-50 p-8 rounded-xl text-center">
+                   <div class="feature-icon bg-primary text-white mx-auto">
+                       <i class="fas fa-users text-2xl"></i>
+                   </div>
+                   <h3 class="text-xl font-bold mb-4 text-gray-800 reveal">P2P Transactions</h3>
+                   <p class="text-gray-600 reveal">Easily transfer funds between Deriv.com users with our peer-to-peer transaction system.</p>
+               </div>
+               <div class="bg-gray-50 p-8 rounded-xl text-center">
+                   <div class="feature-icon bg-primary text-white mx-auto">
+                       <i class="fas fa-chart-line text-2xl"></i>
+                   </div>
+                   <h3 class="text-xl font-bold mb-4 text-gray-800 reveal">MT5 Trading Integration</h3>
+                   <p class="text-gray-600 reveal">We're working hard to bring you seamless MT5 trading directly within PesaDownload. Stay tuned for this exciting update!</p>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <!-- How It Works Section -->
+   <section id="how-it-works" class="py-16 bg-gray-50">
+       <div class="container mx-auto px-4">
+           <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 reveal">How It Works</h2>
+           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+               <div class="how-it-works-step bg-white p-6 rounded-xl text-center">
+                   <div class="feature-icon bg-primary text-white mx-auto mb-4">
+                       <i class="fas fa-download text-2xl"></i>
+                   </div>
+                   <h3 class="text-xl font-bold mb-2 text-gray-800 reveal">Step 1: Download the App</h3>
+                   <p class="text-gray-600 reveal">Get PesaDownload from the Google Play Store or our secure direct download link.</p>
+               </div>
+               <div class="how-it-works-step bg-white p-6 rounded-xl text-center">
+                   <div class="feature-icon bg-primary text-white mx-auto mb-4">
+                       <i class="fas fa-link text-2xl"></i>
+                   </div>
+                   <h3 class="text-xl font-bold mb-2 text-gray-800 reveal">Step 2: Connect Deriv</h3>
+                   <p class="text-gray-600 reveal">Link your Deriv account securely within the app for instant transactions.</p>
+               </div>
+               <div class="how-it-works-step bg-white p-6 rounded-xl text-center">
+                   <div class="feature-icon bg-primary text-white mx-auto mb-4">
+                       <i class="fas fa-exchange-alt text-2xl"></i>
+                   </div>
+                   <h3 class="text-xl font-bold mb-2 text-gray-800 reveal">Step 3: Transact Instantly</h3>
+                   <p class="text-gray-600 reveal">Deposit or withdraw funds to/from Deriv.com with just a few taps.</p>
+               </div>
+           </div>
+           <div class="text-center mt-8">
+               <a href="/Assets/downloads/DownloadPesa.apk" class="bg-primary text-white font-bold py-3 px-6 rounded-full download-btn hover:bg-primary-dark">
+                   Get Started Now <i class="fas fa-arrow-right ml-2"></i>
+               </a>
+           </div>
+       </div>
+   </section>
+
+   <!-- Download Section -->
+   <section id="download" class="py-16 bg-white">
+       <div class="container mx-auto px-4">
+           <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 reveal">Download PesaDownload</h2>
+           <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
+               <div class="bg-gray-50 p-8 rounded-xl text-center w-full md:w-1/2 max-w-md">
+                   <div class="mb-6">
+                       <i class="fas fa-download text-5xl text-primary"></i>
+                   </div>
+                   <h3 class="text-xl font-bold mb-4 text-gray-800 reveal">Direct Download</h3>
+                   <p class="text-gray-600 mb-6 reveal">Get the latest version of PesaDownload directly from our secure servers.</p>
+                   <a href="/Assets/downloads/DownloadPesa.apk" class="inline-block">
+                       <button class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full download-btn">
+                           Download APK <i class="fas fa-arrow-down ml-2"></i>
+                       </button>
+                   </a>
+                   <p class="text-sm text-gray-500 mt-2 reveal">Version 1.0.0</p>
+               </div>
+               <div class="bg-gray-50 p-8 rounded-xl text-center w-full md:w-1/2 max-w-md">
+                   <div class="mb-6">
+                       <i class="fab fa-google-play text-5xl text-primary"></i>
+                   </div>
+                   <h3 class="text-xl font-bold mb-4 text-gray-800 reveal">Google Play Store</h3>
+                   <p class="text-gray-600 mb-6 reveal">Download PesaDownload from the official Google Play Store for automatic updates.</p>
+                   <button class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full download-btn">
+                       Get on Play Store <i class="fab fa-google-play ml-2"></i>
+                   </button>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <!-- Testimonials Section -->
+   <section id="testimonials" class="py-16 bg-gray-100">
+       <div class="container mx-auto px-4">
+           <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 reveal">What Our Users Say</h2>
+           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+               <div class="bg-white p-6 rounded-lg shadow-md testimonial-card">
+                   <div class="flex items-center mb-4">
+                       <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-4">EK</div>
+                       <div>
+                           <h4 class="font-bold reveal">Emmanuel K.</h4>
+                           <div class="flex text-yellow-400">
+                               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                           </div>
+                       </div>
+                   </div>
+                   <p class="text-gray-600 reveal">"PesaDownload has transformed how I manage my Deriv.com funds. Transactions that used to take hours now happen in seconds!"</p>
+               </div>
+               <div class="bg-white p-6 rounded-lg shadow-md testimonial-card">
+                   <div class="flex items-center mb-4">
+                       <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-4">FM</div>
+                       <div>
+                           <h4 class="font-bold reveal">Felix M.</h4>
+                           <div class="flex text-yellow-400">
+                               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                           </div>
+                       </div>
+                   </div>
+                   <p class="text-gray-600 reveal">"The security features give me peace of mind. I can transfer large amounts without worrying about my funds."</p>
+               </div>
+               <div class="bg-white p-6 rounded-lg shadow-md testimonial-card">
+                   <div class="flex items-center mb-4">
+                       <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-4">BK</div>
+                       <div>
+                           <h4 class="font-bold reveal">Bruce K.</h4>
+                           <div class="flex text-yellow-400">
+                               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                           </div>
+                       </div>
+                   </div>
+                   <p class="text-gray-600 reveal">"The P2P feature is a game-changer. I can now easily send money to my trading partners on Deriv.com."</p>
+               </div>
+               <div class="bg-white p-6 rounded-lg shadow-md testimonial-card">
+                   <div class="flex items-center mb-4">
+                       <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mr-4">JW</div>
+                       <div>
+                           <h4 class="font-bold reveal">Jeff W.</h4>
+                           <div class="flex text-yellow-400">
+                               <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                           </div>
+                       </div>
+                   </div>
+                   <p class="text-gray-600 reveal">"The simplest and most reliable Mpesa-Deriv integration I've used. Customer support is responsive too!"</p>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <!-- User Stats Section -->
+   <section id="user-stats" class="py-16 bg-white">
+       <div class="container mx-auto px-4">
+           <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 reveal">Our Impact</h2>
+           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+               <div class="stat-card">
+                   <h3 class="text-3xl font-bold reveal">50K+</h3>
+                   <p class="text-lg reveal">Downloads</p>
+               </div>
+               <div class="stat-card">
+                   <h3 class="text-3xl font-bold reveal">100K+</h3>
+                   <p class="text-lg reveal">Transactions Processed</p>
+               </div>
+               <div class="stat-card">
+                   <h3 class="text-3xl font-bold reveal">99.9%</h3>
+                   <p class="text-lg reveal">Uptime Guarantee</p>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <!-- FAQ Section -->
+   <section id="faq" class="py-16 bg-gray-50">
+       <div class="container mx-auto px-4">
+           <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 reveal">Frequently Asked Questions</h2>
+           <div class="space-y-4">
+               <div class="faq-item">
+                   <div class="faq-question" onclick="toggleFAQ(this)">
+                       <h3 class="text-xl font-semibold text-gray-800 reveal">What is PesaDownload?</h3>
+                       <i class="fas fa-chevron-down"></i>
+                   </div>
+                   <div class="faq-answer">
+                       <p class="text-gray-600 reveal">PesaDownload is a platform that allows traders to deposit and withdraw from Deriv to M-PESA seamlessly.</p>
+                   </div>
+               </div>
+               <div class="faq-item">
+                   <div class="faq-question" onclick="toggleFAQ(this)">
+                       <h3 class="text-xl font-semibold text-gray-800 reveal">Is my data secure?</h3>
+                       <i class="fas fa-chevron-down"></i>
+                   </div>
+                   <div class="faq-answer">
+                       <p class="text-gray-600 reveal">Yes, we use bank-level encryption and comply with Mpesa security standards to protect your data.</p>
+                   </div>
+               </div>
+               <div class="faq-item">
+                   <div class="faq-question" onclick="toggleFAQ(this)">
+                       <h3 class="text-xl font-semibold text-gray-800 reveal">Can I use PesaDownload on multiple devices?</h3>
+                       <i class="fas fa-chevron-down"></i>
+                   </div>
+                   <div class="faq-answer">
+                       <p class="text-gray-600 reveal">Yes, you can log in on multiple devices at the same time.</p>
+                   </div>
+               </div>
+               <div class="faq-item">
+                   <div class="faq-question" onclick="toggleFAQ(this)">
+                       <h3 class="text-xl font-semibold text-gray-800 reveal">What is the minimum deposit and withdrawal?</h3>
+                       <i class="fas fa-chevron-down"></i>
+                   </div>
+                   <div class="faq-answer">
+                       <p class="text-gray-600 reveal">The minimum deposit is 1 USD and the minimum withdrawal is 2 USD.</p>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <!-- Contact Section -->
+   <section id="contact" class="py-16 bg-white">
+       <div class="container mx-auto px-4">
+           <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 reveal">Contact Us</h2>
+           <div class="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-8">
+               <div class="md:w-1/2 bg-gray-50 p-8 rounded-xl">
+                   <h3 class="text-xl font-bold mb-6 text-gray-800 reveal">Get in Touch</h3>
+                   <div class="space-y-4">
+                       <div class="flex items-start">
+                           <i class="fas fa-envelope text-primary text-xl mt-1 mr-4"></i>
+                           <div>
+                               <h4 class="font-bold text-gray-800 reveal">Email</h4>
+                               <a href="mailto:info.pesadownload@gmail.com" class="text-gray-600 hover:text-primary reveal">info.pesadownload@gmail.com</a>
+                           </div>
+                       </div>
+                       <div class="flex items-start">
+                           <i class="fas fa-phone-alt text-primary text-xl mt-1 mr-4"></i>
+                           <div>
+                               <h4 class="font-bold text-gray-800 reveal">Phone</h4>
+                               <a href="tel:+254746216077" class="text-gray-600 hover:text-primary reveal">+254 746 216 077</a>
+                           </div>
+                       </div>
+                       <div class="flex items-start">
+                           <i class="fas fa-map-marker-alt text-primary text-xl mt-1 mr-4"></i>
+                           <div>
+                               <h4 class="font-bold text-gray-800 reveal">Location</h4>
+                               <p class="text-gray-600 reveal">Eldoret, Kenya</p>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="mt-8">
+                       <h4 class="font-bold text-gray-800 mb-4 reveal">Follow Us</h4>
+                       <div class="flex space-x-4">
+                           <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark">
+                               <i class="fab fa-facebook-f"></i>
+                           </a>
+                           <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark">
+                               <i class="fab fa-twitter"></i>
+                           </a>
+                           <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark">
+                               <i class="fab fa-instagram"></i>
+                           </a>
+                           <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark">
+                               <i class="fab fa-linkedin-in"></i>
+                           </a>
+                       </div>
+                   </div>
+               </div>
+               <div class="md:w-1/2 bg-gray-50 p-8 rounded-xl">
+                   <h3 class="text-xl font-bold mb-6 text-gray-800 reveal">Send Us a Message</h3>
+                   <form>
+                       <div class="mb-4">
+                           <label for="name" class="block text-gray-700 mb-2 reveal">Your Name</label>
+                           <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                       </div>
+                       <div class="mb-4">
+                           <label for="email" class="block text-gray-700 mb-2 reveal">Email Address</label>
+                           <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary">
+                       </div>
+                       <div class="mb-4">
+                           <label for="message" class="block text-gray-700 mb-2 reveal">Message</label>
+                           <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary"></textarea>
+                       </div>
+                       <button type="submit" class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full w-full">
+                           Send Message <i class="fas fa-paper-plane ml-2"></i>
+                       </button>
+                   </form>
+               </div>
+           </div>
+       </div>
+   </section>
+
+   <!-- Call to Action Banner -->
+   <section class="cta-banner">
+       <div class="container mx-auto px-4">
+           <h2 class="text-3xl font-bold mb-4 reveal">Ready to Start Trading?</h2>
+           <p class="text-lg mb-6 reveal">Join thousands of users and experience seamless Mpesa transactions with PesaDownload today!</p>
+           <a href="/Assets/downloads/DownloadPesa.apk" class="bg-white text-primary font-bold py-3 px-8 rounded-full download-btn hover:bg-gray-100">
+               Download Now <i class="fas fa-arrow-down ml-2"></i>
+           </a>
+       </div>
+   </section>
+
+   <!-- Enhanced Footer -->
+   <footer class="py-12">
+       <div class="container mx-auto px-4">
+           <div class="footer-container">
+               <div class="footer-column">
+                   <h3 class="reveal">About PesaDownload</h3>
+                   <p class="text-sm reveal">PesaDownload offers fast and secure Mpesa transactions for Deriv.com, enabling seamless withdrawals and deposits in seconds.</p>
+               </div>
+               <div class="footer-column">
+                   <h3 class="reveal">Quick Links</h3>
+                   <a href="#features">Features</a>
+                   <a href="#how-it-works">How It Works</a>
+                   <a href="#download">Download</a>
+                   <a href="#testimonials">Testimonials</a>
+                   <a href="#faq">FAQ</a>
+                   <a href="#contact">Contact</a>
+               </div>
+               <div class="footer-column">
+                   <h3 class="reveal">Legal</h3>
+                   <a href="#">Privacy Policy</a>
+                   <a href="termsofuse.html">Terms of Use</a>
+                   <a href="#">FAQ</a>
+               </div>
+               <div class="footer-column">
+                   <h3 class="reveal">Follow Us</h3>
+                   <div class="footer-social">
+                       <a href="#"><i class="fab fa-facebook-f"></i></a>
+                       <a href="#"><i class="fab fa-twitter"></i></a>
+                       <a href="#"><i class="fab fa-instagram"></i></a>
+                       <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                   </div>
+               </div>
+           </div>
+           <div class="footer-bottom">
+               <p class="reveal">© 2025 PesaDownload. All rights reserved. Kenya</p>
+           </div>
+       </div>
+   </footer>
+
+   <!-- Mobile Menu -->
+   <div id="mobileMenu" class="fixed inset-0 bg-primary z-50 flex flex-col items-center justify-center hidden">
+       <button id="closeMenu" class="absolute top-4 right-4 text-white text-2xl">
+           <i class="fas fa-times"></i>
+       </button>
+       <nav class="flex flex-col items-center space-y-8 text-white text-xl">
+            <a href="index.html" class="hover:text-yellow-200 transition reveal">Home</a>
+           <a href="#contact" class="hover:text-yellow-200 transition reveal">Contact</a>
+           <a href="termsofuse.html" class="hover:text-yellow-200 transition reveal">Terms of Use</a>
+           <a href="privacypolicy.html" class="hover:text-yellow-200 transition reveal">Privacy Policy</a>
+       </nav>
+   </div>
+
+   <!-- Back to Top Button -->
+   <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+       <i class="fas fa-arrow-up"></i>
+   </div>
+
+   <!-- WhatsApp Button -->
+   <a href="https://wa.me/+254746216077?text=Hello%20PesaDownload%20Support,%20I%20need%20help!" target="_blank" class="whatsapp-btn" id="whatsappBtn">
+       <i class="fab fa-whatsapp"></i>
+   </a>
+
+   <!-- Scripts -->
+   <script>
+       // Mobile menu toggle
+       const mobileMenu = document.getElementById('mobileMenu');
+       const menuToggle = document.querySelector('header button');
+       const closeMenu = document.getElementById('closeMenu');
+       menuToggle.addEventListener('click', () => {
+           mobileMenu.classList.remove('hidden');
+           mobileMenu.classList.add('flex');
+       });
+       closeMenu.addEventListener('click', () => {
+           mobileMenu.classList.add('hidden');
+           mobileMenu.classList.remove('flex');
+       });
+
+       // Smooth scrolling
+       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+           anchor.addEventListener('click', function(e) {
+               e.preventDefault();
+               document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+               mobileMenu.classList.add('hidden');
+               mobileMenu.classList.remove('flex');
+           });
+       });
+
+       // Image scroller
+       function scrollImages(direction) {
+           const scroller = document.getElementById('imageScroller');
+           const scrollAmount = scroller.querySelector('img').clientWidth + 20;
+           scroller.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+       }
+
+       // FAQ toggle
+       function toggleFAQ(element) {
+           const answer = element.nextElementSibling;
+           const icon = element.querySelector('i');
+           answer.classList.toggle('active');
+           icon.classList.toggle('fa-chevron-down');
+           icon.classList.toggle('fa-chevron-up');
+       }
+
+       // Back to Top button visibility and functionality
+       const backToTop = document.getElementById('backToTop');
+       const whatsappBtn = document.getElementById('whatsappBtn');
+       window.addEventListener('scroll', () => {
+           if (window.scrollY > 300) {
+               backToTop.classList.add('active');
+               whatsappBtn.classList.add('active');
+           } else {
+               backToTop.classList.remove('active');
+               whatsappBtn.classList.remove('active');
+           }
+       });
+
+       function scrollToTop() {
+           window.scrollTo({ top: 0, behavior: 'smooth' });
+       }
+
+       // Left-Side CTA Banner visibility on scroll stop
+       const ctaLeftBanner = document.getElementById('ctaLeftBanner');
+       let scrollTimeout;
+
+       window.addEventListener('scroll', () => {
+           ctaLeftBanner.classList.remove('active');
+           clearTimeout(scrollTimeout);
+           scrollTimeout = setTimeout(() => {
+               if (window.scrollY > 300) {
+                   ctaLeftBanner.classList.add('active');
+               }
+           }, 500);
+       });
+
+       // Scroll Animation with Intersection Observer
+       document.addEventListener('DOMContentLoaded', () => {
+           const reveals = document.querySelectorAll('.reveal');
+           const observer = new IntersectionObserver(
+               (entries) => {
+                   entries.forEach((entry) => {
+                       if (entry.isIntersecting) {
+                           entry.target.classList.add('active');
+                           observer.unobserve(entry.target);
+                       }
+                   });
+               },
+               {
+                   threshold: 0.1,
+                   rootMargin: '0px 0px -50px 0px'
+               }
+           );
+           reveals.forEach((element) => {
+               observer.observe(element);
+           });
+       });
+   </script>
+</body>
+</html>

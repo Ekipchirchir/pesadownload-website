@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PesaDownload Terms of Use</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+        }
+        .section-title {
+            color: #8B6200;
+            font-weight: bold;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+            border-bottom: 2px solid #8B6200;
+            padding-bottom: 0.5rem;
+        }
+        .subsection-title {
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+        .print-only {
+            display: none;
+        }
+        @media print {
+            .print-only {
+                display: block;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+        header {
+            background: linear-gradient(to right, #8B6200, #6B4A00);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        header:hover {
+            background: linear-gradient(to right, #6B4A00, #8B6200);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+        .logo-container svg {
+            transition: fill 0.3s ease;
+        }
+        .logo-container:hover svg circle {
+            fill: #e08b34;
+        }
+        nav a {
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #f7e2c2;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #f7e2c2;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        footer {
+            background: black;
+            color: #d1d1d1;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        .footer-column h3 {
+            color: #f7e2c2;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #8B6200;
+            padding-bottom: 5px;
+        }
+        .footer-column a {
+            color: #d1d1d1;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        .footer-column a:hover {
+            color: #8B6200;
+        }
+        .footer-social a {
+            background-color: #8B6200;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .footer-social a:hover {
+            background-color: #6B4A00;
+            transform: scale(1.1);
+        }
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-column {
+                text-align: center;
+            }
+        }
+        .bg-primary { background-color: #8B6200; }
+        .text-primary { color: #8B6200; }
+        .border-primary { border-color: #8B6200; }
+        .hover\:bg-primary-dark:hover { background-color: #6B4A00; }
+        .download-btn { transition: all 0.3s ease; }
+        .download-btn:hover { transform: translateY(-5px); }
+        .back-to-top, .whatsapp-btn {
+            position: fixed;
+            right: 20px;
+            background-color: #8B6200;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .back-to-top.active, .whatsapp-btn.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top {
+            bottom: 80px;
+        }
+        .whatsapp-btn {
+            bottom: 20px;
+            background-color: #25D366;
+        }
+        .back-to-top:hover, .whatsapp-btn:hover {
+            background-color: #6B4A00;
+            transform: scale(1.1);
+        }
+        .whatsapp-btn:hover {
+            background-color: #20BD57;
+        }
+        .cta-top-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #8B6200, #6B4A00);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.5s ease forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        .cta-top-banner .small-note {
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .cta-left-banner {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(90deg, #8B6200, #6B4A00);
+            color: white;
+            padding: 1rem;
+            z-index: 999;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .cta-left-banner.active {
+            opacity: 1;
+            visibility: visible;
+            animation: slideInLeft 0.5s ease forwards;
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%) translateY(-50%); }
+            to { transform: translateX(0) translateY(-50%); }
+        }
+        .cta-left-banner .small-text {
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .cta-left-banner a {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+        @media (max-width: 768px) {
+            .cta-left-banner {
+                top: auto;
+                bottom: 20px;
+                left: 10px;
+                right: 10px;
+                transform: none;
+                border-radius: 10px;
+            }
+            .cta-left-banner.active {
+                animation: slideInBottom 0.5s ease forwards;
+            }
+            @keyframes slideInBottom {
+                from { transform: translateY(100%); }
+                to { transform: translateY(0); }
+            }
+        }
+        /* Content Styling */
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .content-section ul, .content-section ol {
+            margin-left: 1.5rem;
+        }
+        .content-section li {
+            margin-bottom: 1rem;
+        }
+        .content-section a {
+            color: #8B6200;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        .content-section a:hover {
+            color: #6B4A00;
+        }
+        /* Scroll Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Staggered Animation Delays */
+        .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .reveal:nth-child(2) { transition-delay: 0.2s; }
+        .reveal:nth-child(3) { transition-delay: 0.3s; }
+        .reveal:nth-child(4) { transition-delay: 0.4s; }
+        .reveal:nth-child(5) { transition-delay: 0.5s; }
+        /* Accessibility: Respect Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Persistent Top CTA Banner from index.html -->
+   
+
+    <!-- Left-Side CTA Banner from index.html -->
+    <div class="cta-left-banner" id="ctaLeftBanner">
+        <span class="small-text reveal">Fast & Secure! Try Now!</span>
+        <a href="/Assets/downloads/DownloadPesa.apk" class="bg-white text-primary font-bold rounded-full download-btn hover:bg-gray-100">
+            Download Now <i class="fas fa-arrow-down ml-2"></i>
+        </a>
+    </div>
+
+    <!-- Enhanced Header from index.html -->
+    <header class="text-white sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="logo-container">
+                <svg width="32" height="32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="mr-2">
+                    <circle cx="100" cy="100" r="95" fill="#d46f29"/>
+                    <circle cx="100" cy="100" r="75" fill="#e08b34"/>
+                    <circle cx="100" cy="100" r="55" fill="#c97629"/>
+                    <text x="100" y="125" text-anchor="middle" font-size="90" font-family="Georgia, serif" fill="#f7e2c2" font-weight="bold">P</text>
+                </svg>
+                <h1 class="text-2xl font-bold reveal">PesaDownload</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">    
+                <a href="index.html">Home</a>
+                <a href="termsofuse.html">Terms of Use</a>
+                <a href="privacypolicy.html">Privacy Policy</a>
+            </nav>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobileMenu" class="fixed inset-0 bg-primary z-50 flex flex-col items-center justify-center hidden">
+        <button id="closeMenu" class="absolute top-4 right-4 text-white text-2xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="flex flex-col items-center space-y-8 text-white text-xl">
+            <a href="index.html" class="hover:text-yellow-200 transition reveal">Home</a>
+           <a href="#contact" class="hover:text-yellow-200 transition reveal">Contact</a>
+           <a href="termsofuse.html" class="hover:text-yellow-200 transition reveal">Terms of Use</a>
+           <a href="privacypolicy.html" class="hover:text-yellow-200 transition reveal">Privacy Policy</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="px-4 md:px-8 lg:px-16 pt-16">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-white-800 reveal">PesaDownload Terms of Use</h1>
+            <p class="text-sm text-white-600 no-print reveal">Last updated: Tuesday, May 20, 2025, 09:46 PM EAT</p>
+        </header>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">Owner and Data Controller</h2>
+            <p class="reveal"><strong>PesaDownload</strong></p>
+            <p class="reveal">Eldoret, Kenya</p>
+            <p class="reveal">Company contact email: <a href="mailto:info.pesadownload@gmail.com" class="reveal">info.pesadownload@gmail.com</a></p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">Terms and Conditions</h2>
+            <ol class="list-decimal">
+                <li>
+                    <h3 class="subsection-title reveal">Acceptance of Terms</h3>
+                    <p class="reveal">By downloading, accessing, or using PesaDownload, you agree to abide by these Terms and Conditions. If you do not agree, please do not use the App.</p>
+                </li>
+                <li>
+                    <h3 class="subsection-title reveal">Description of Services</h3>
+                    <p class="reveal">PesaDownload facilitates seamless deposits and withdrawals between Deriv.com and M-PESA accounts, including peer-to-peer (P2P) transactions. Services may be updated, modified, or discontinued at any time without prior notice.</p>
+                </li>
+                <li>
+                    <h3 class="subsection-title reveal">Eligibility</h3>
+                    <p class="reveal">To use this App, you must be at least 18 years old and either a resident of Kenya or a registered M-PESA user. By registering, you confirm that all information provided is accurate and complete.</p>
+                </li>
+                <li>
+                    <h3 class="subsection-title reveal">User Responsibilities</h3>
+                    <p class="reveal">You are responsible for maintaining the confidentiality of your account information. You agree not to engage in fraudulent activities, tamper with the App’s software, or violate any applicable laws while using PesaDownload.</p>
+                </li>
+                <li>
+                    <h3 class="subsection-title reveal">Fees and Payments</h3>
+                    <p class="reveal">PesaDownload does not charge any fees for registration. However, a margin of 4% is applied between the current market exchange rates when transferring between M-PESA and Deriv.com. Refunds are only issued after confirmation of an incomplete transaction.</p>
+                </li>
+                <li>
+                    <h3 class="subsection-title reveal">Intellectual Property</h3>
+                    <p class="reveal">All content, branding, and intellectual property in the App belong to PesaDownload. Unauthorized reproduction or misuse is strictly prohibited.</p>
+                </li>
+                <li>
+                    <h3 class="subsection-title reveal">Termination</h3>
+                    <p class="reveal">We reserve the right to suspend or terminate access to the App without prior notice if you violate these Terms.</p>
+                </li>
+                <li>
+                    <h3 class="subsection-title reveal">Changes to the Terms</h3>
+                    <p class="reveal">We may modify these Terms at any time. Continued use of the App signifies your acceptance of any changes.</p>
+                </li>
+            </ol>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">Legal Information</h2>
+            <ol class="list-decimal" start="9">
+                <li>
+                    <h3 class="subsection-title reveal">Governing Law</h3>
+                    <p class="reveal">These Terms are governed by the laws of Kenya and, in relation to platform integrations, also by Deriv.com’s platform terms. Any disputes must be handled through official communication channels.</p>
+                </li>
+                <li>
+                    <h3 class="subsection-title reveal">Limitation of Liability</h3>
+                    <p class="reveal">PesaDownload is not liable for any direct, indirect, or consequential damages resulting from your use of the App.</p>
+                </li>
+            </ol>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">Help & Contact</h2>
+            <p class="reveal">Contact us via:</p>
+            <ul class="list-disc">
+                <li class="reveal"><strong>Email:</strong> <a href="mailto:info.pesadownload@gmail.com" class="reveal">info.pesadownload@gmail.com</a></li>
+                <li class="reveal"><strong>Phone:</strong> <a href="tel:+254746216077" class="reveal">+254 746 216 077</a></li>
+                <li class="reveal"><strong>WhatsApp:</strong> <a href="https://wa.me/+254746216077?text=Hello%20PesaDownload%20Support,%20I%20need%20help!" class="reveal">Chat with us</a></li>
+                <li class="reveal"><strong>Social Media:</strong> Follow us on <a href="#" class="reveal">Facebook</a>, <a href="#" class="reveal">Twitter</a>, <a href="#" class="reveal">Instagram</a>, <a href="#" class="reveal">LinkedIn</a></li>
+            </ul>
+            <p class="mt-4 reveal"><strong>Download:</strong></p>
+            <ul class="list-disc">
+                <li class="reveal"><a href="#" class="reveal">Google Play Store</a></li>
+                <li class="reveal"><a href="/Assets/downloads/DownloadPesa.apk" class="reveal">Direct APK Download</a></li>
+                <li class="reveal"><strong>Use on Web:</strong> Open Web App (Coming Soon!!)</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">Additional Information for Users</h2>
+            <h3 class="subsection-title reveal">Legal Basis for Data Processing</h3>
+            <p class="reveal">PesaDownload may process personal data when:</p>
+            <ul class="list-disc">
+                <li class="reveal">You have given consent for specific purposes.</li>
+                <li class="reveal">Data is required to fulfill a contract or pre-contractual obligation.</li>
+                <li class="reveal">Compliance with legal requirements is necessary.</li>
+                <li class="reveal">It serves the public interest or exercise of official authority.</li>
+                <li class="reveal">It is necessary for legitimate business interests.</li>
+            </ul>
+            <p class="mt-2 reveal">You may contact us to understand which basis applies to your data processing.</p>
+
+            <h3 class="subsection-title reveal">System Logs and Maintenance</h3>
+            <p class="reveal">For performance and maintenance, PesaDownload and third-party services may collect logs or IP addresses to monitor usage and fix issues.</p>
+        </section>
+    </main>
+
+    <!-- Enhanced Footer from index.html -->
+    <footer class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3 class="reveal">About PesaDownload</h3>
+                    <p class="text-sm reveal">PesaDownload offers fast and secure Mpesa transactions for Deriv.com, enabling seamless withdrawals and deposits in seconds.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 class="reveal">Quick Links</h3>
+                    <a href="index.html#features" class="reveal">Features</a>
+                    <a href="index.html#how-it-works" class="reveal">How It Works</a>
+                    <a href="index.html#download" class="reveal">Download</a>
+                    <a href="index.html#testimonials" class="reveal">Testimonials</a>
+                    <a href="index.html#faq" class="reveal">FAQ</a>
+                    <a href="index.html#contact" class="reveal">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h3 class="reveal">Legal</h3>
+                    <a href="privacypolicy.html" class="reveal">Privacy Policy</a>
+                    <a href="termsofuse.html" class="reveal">Terms of Use</a>
+                    <a href="index.html#faq" class="reveal">FAQ</a>
+                </div>
+                <div class="footer-column">
+                    <h3 class="reveal">Follow Us</h3>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="reveal">© 2025 PesaDownload. All rights reserved. Kenya</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <a href="https://wa.me/+254746216077?text=Hello%20PesaDownload%20Support,%20I%20need%20help!" target="_blank" class="whatsapp-btn" id="whatsappBtn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuToggle = document.querySelector('header button');
+        const closeMenu = document.getElementById('closeMenu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+        });
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+
+        // Back to Top button visibility and functionality
+        const backToTop = document.getElementById('backToTop');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const ctaLeftBanner = document.getElementById('ctaLeftBanner');
+        let scrollTimeout;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+                whatsappBtn.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+                whatsappBtn.classList.remove('active');
+            }
+
+            ctaLeftBanner.classList.remove('active');
+
+            clearTimeout(scrollTimeout);
+
+            scrollTimeout = setTimeout(() => {
+                if (window.scrollY > 300) {
+                    ctaLeftBanner.classList.add('active');
+                }
+            }, 500);
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Scroll Animation with Intersection Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                }
+            );
+            reveals.forEach((element) => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

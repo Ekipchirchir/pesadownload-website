@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PesaDownload Privacy Policy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+        }
+        .section-title {
+            color: #8B6200;
+            font-weight: bold;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.75rem;
+            border-bottom: 2px solid #8B6200;
+            padding-bottom: 0.5rem;
+        }
+        .subsection-title {
+            font-weight: bold;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+        .print-only {
+            display: none;
+        }
+        @media print {
+            .print-only {
+                display: block;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+        /* Header Styles from index.html */
+        header {
+            background: linear-gradient(to right, #8B6200, #6B4A00);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+        .logo-container svg {
+            transition: fill 0.3s ease;
+        }
+        .logo-container:hover svg circle {
+            fill: #e08b34;
+        }
+        nav a {
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #f7e2c2;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #f7e2c2;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        /* Footer Styles from index.html */
+        footer {
+            background: black;
+            color: #d1d1d1;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        .footer-column h3 {
+            color: #f7e2c2;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #8B6200;
+            padding-bottom: 5px;
+        }
+        .footer-column a {
+            color: #d1d1d1;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        .footer-column a:hover {
+            color: #8B6200;
+        }
+        .footer-social a {
+            background-color: #8B6200;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .footer-social a:hover {
+            background-color: #6B4A00;
+            transform: scale(1.1);
+        }
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .footer-column {
+                text-align: center;
+            }
+        }
+        /* CTA and Button Styles from index.html */
+        .bg-primary { background-color: #8B6200; }
+        .text-primary { color: #8B6200; }
+        .border-primary { border-color: #8B6200; }
+        .hover\:bg-primary-dark:hover { background-color: #6B4A00; }
+        .download-btn { transition: all 0.3s ease; }
+        .download-btn:hover { transform: translateY(-5px); }
+        .back-to-top, .whatsapp-btn {
+            position: fixed;
+            right: 20px;
+            background-color: #8B6200;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .back-to-top.active, .whatsapp-btn.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top {
+            bottom: 80px;
+        }
+        .whatsapp-btn {
+            bottom: 20px;
+            background-color: #25D366;
+        }
+        .back-to-top:hover, .whatsapp-btn:hover {
+            background-color: #6B4A00;
+            transform: scale(1.1);
+        }
+        .whatsapp-btn:hover {
+            background-color: #20BD57;
+        }
+        /* Persistent Top CTA Banner from index.html */
+        .cta-top-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #8B6200, #6B4A00);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.5s ease forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        .cta-top-banner .small-note {
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        /* Left-Side CTA Banner from index.html */
+        .cta-left-banner {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(90deg, #8B6200, #6B4A00);
+            color: white;
+            padding: 1rem;
+            z-index: 999;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .cta-left-banner.active {
+            opacity: 1;
+            visibility: visible;
+            animation: slideInLeft 0.5s ease forwards;
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%) translateY(-50%); }
+            to { transform: translateX(0) translateY(-50%); }
+        }
+        .cta-left-banner .small-text {
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .cta-left-banner a {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+        @media (max-width: 768px) {
+            .cta-left-banner {
+                top: auto;
+                bottom: 20px;
+                left: 10px;
+                right: 10px;
+                transform: none;
+                border-radius: 10px;
+            }
+            .cta-left-banner.active {
+                animation: slideInBottom 0.5s ease forwards;
+            }
+            @keyframes slideInBottom {
+                from { transform: translateY(100%); }
+                to { transform: translateY(0); }
+            }
+        }
+        /* Content Styling */
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        .content-section ul, .content-section ol {
+            margin-left: 1.5rem;
+        }
+        .content-section li {
+            margin-bottom: 1rem;
+        }
+        .content-section a {
+            color: #8B6200;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        .content-section a:hover {
+            color: #6B4A00;
+        }
+        /* Scroll Animation Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Staggered Animation Delays */
+        .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .reveal:nth-child(2) { transition-delay: 0.2s; }
+        .reveal:nth-child(3) { transition-delay: 0.3s; }
+        .reveal:nth-child(4) { transition-delay: 0.4s; }
+        .reveal:nth-child(5) { transition-delay: 0.5s; }
+        /* Accessibility: Respect Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Persistent Top CTA Banner -->
+    
+
+    <!-- Left-Side CTA Banner -->
+    <div class="cta-left-banner" id="ctaLeftBanner">
+        <span class="small-text reveal">Fast & Secure! Try Now!</span>
+        <a href="/Assets/downloads/DownloadPesa.apk" class="bg-white text-primary font-bold rounded-full download-btn hover:bg-gray-100">
+            Download Now <i class="fas fa-arrow-down ml-2"></i>
+        </a>
+    </div>
+
+    <!-- Enhanced Header -->
+    <header class="text-white sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="logo-container">
+                <svg width="32" height="32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="mr-2">
+                    <circle cx="100" cy="100" r="95" fill="#d46f29"/>
+                    <circle cx="100" cy="100" r="75" fill="#e08b34"/>
+                    <circle cx="100" cy="100" r="55" fill="#c97629"/>
+                    <text x="100" y="125" text-anchor="middle" font-size="90" font-family="Georgia, serif" fill="#f7e2c2" font-weight="bold">P</text>
+                </svg>
+                <h1 class="text-2xl font-bold reveal">PesaDownload</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html">Home</a>
+                <a href="termsofuse.html">Terms of Use</a>
+                <a href="privacypolicy.html">Privacy Policy</a>
+            </nav>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-primary z-50 flex flex-col items-center justify-center hidden">
+        <button id="closeMenu" class="absolute top-4 right-4 text-white text-2xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="flex flex-col items-center space-y-8 text-white text-xl">
+            <a href="index.html" class="hover:text-yellow-200 transition reveal">Home</a>
+           <a href="#contact" class="hover:text-yellow-200 transition reveal">Contact</a>
+           <a href="termsofuse.html" class="hover:text-yellow-200 transition reveal">Terms of Use</a>
+           <a href="privacypolicy.html" class="hover:text-yellow-200 transition reveal">Privacy Policy</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="px-4 md:px-8 lg:px-16 pt-16">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-white-800 reveal">PesaDownload Privacy Policy</h1>
+            <p class="text-sm text-gray-600 print-only reveal">This document can be printed for reference using the print command in your browser settings.</p>
+            <p class="text-sm text-white-600 no-print reveal">Effective Date: May 1, 2025 | Last updated: Tuesday, May 20, 2025, 03:37 PM EAT</p>
+        </header>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">Introduction</h2>
+            <p class="reveal">This Privacy Policy outlines how PesaDownload ("we," "our," or "us") collects, uses, shares, and protects your personal information when you use ourម
+
+System: mobile application or website. We follow best practices as recommended by Google Play and relevant data protection standards.</p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">1. Information We Collect</h2>
+            <p class="reveal">To deliver a secure and seamless experience, we collect the following types of data:</p>
+            <h3 class="subsection-title reveal">Personal Information</h3>
+            <p class="reveal">When you create an account, we may collect your name, email address, phone number, and any other relevant contact details.</p>
+            <h3 class="subsection-title reveal">Financial Data</h3>
+            <p class="reveal">To enable transactions, we may collect mobile money account details—such as M-PESA or Airtel Money numbers—to support deposits and withdrawals.</p>
+            <h3 class="subsection-title reveal">Usage Data</h3>
+            <p class="reveal">We gather information about how you interact with the app—such as your device type, operating system, IP address, and in-app behavior—to help improve performance and usability.</p>
+            <h3 class="subsection-title reveal">Transaction Data</h3>
+            <p class="reveal">We record transaction activity, including deposits, withdrawals, and history, for security, reporting, and fraud prevention purposes.</p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">2. How We Use Your Information</h2>
+            <p class="reveal">Your information is used to:</p>
+            <ul class="list-disc">
+                <li class="reveal">Deliver and manage our services effectively</li>
+                <li class="reveal">Improve and personalize your app experience</li>
+                <li class="reveal">Communicate with you about account activity, support, and updates</li>
+                <li class="reveal">Process payments securely and detect suspicious or unauthorized activity</li>
+                <li class="reveal">Fulfill legal obligations and protect user data and our platform</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">3. Sharing and Disclosure of Information</h2>
+            <p class="reveal">We do not sell your personal information. However, we may share your data in the following circumstances:</p>
+            <h3 class="subsection-title reveal">Service Providers</h3>
+            <p class="reveal">We may work with trusted third-party vendors (such as payment gateways) who help us operate and maintain our services. These partners are obligated to keep your data secure and confidential.</p>
+            <h3 class="subsection-title reveal">Legal Compliance</h3>
+            <p class="reveal">If required by law, regulation, or legal process (e.g., court orders or government requests), we may disclose your information.</p>
+            <h3 class="subsection-title reveal">Business Changes</h3>
+            <p class="reveal">In the event of a merger, acquisition, or asset sale, your information may be transferred as part of the business transaction.</p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">4. Keeping Your Data Secure</h2>
+            <p class="reveal">We use strong security practices to help protect your personal data from unauthorized access or misuse. While no digital system can be completely secure, we continuously monitor and update our security infrastructure to align with current best practices.</p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">5. Your Privacy Rights</h2>
+            <p class="reveal">You have rights when it comes to your personal data, including:</p>
+            <ul class="list-disc">
+                <li class="reveal">Requesting access to the information we hold about you</li>
+                <li class="reveal">Asking for corrections to inaccurate or outdated data</li>
+                <li class="reveal">Requesting deletion of your data, where legally permitted</li>
+                <li class="reveal">Limiting how your data is used under certain conditions</li>
+            </ul>
+            <p class="mt-2 reveal">To exercise any of these rights, please contact us directly.</p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">6. Data Retention</h2>
+            <p class="reveal">We only keep your data for as long as it’s needed to fulfill the purposes outlined in this policy, meet legal requirements, and maintain accurate financial records.</p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">7. Third-Party Links</h2>
+            <p class="reveal">PesaDownload may include links to other websites or services. Please note that we are not responsible for the privacy practices or content of those third-party sites. We encourage you to review their privacy policies before sharing any personal information.</p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">8. Changes to This Privacy Policy</h2>
+            <p class="reveal">We may revise this Privacy Policy from time to time. If any major changes are made, we’ll notify you via the app or email. Be sure to check this page occasionally to stay informed of any updates.</p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title reveal">9. Contact Us</h2>
+            <p class="reveal">If you have any questions or concerns about this Privacy Policy, feel free to reach out to us:</p>
+            <ul class="list-disc">
+                <li class="reveal"><strong>Email:</strong> <a href="mailto:info.pesadownload@gmail.com" class="reveal">info.pesadownload@gmail.com</a></li>
+                <li class="reveal"><strong>Phone:</strong> <a href="tel:+254746216077" class="reveal">+254 746 216 077</a></li>
+                <li class="reveal"><strong>WhatsApp:</strong> <a href="https://wa.me/+254746216077?text=Hello%20PesaDownload%20Support,%20I%20need%20help!" class="reveal">Chat with us</a></li>
+                <li class="reveal"><strong>Social Media:</strong> Follow us on <a href="#" class="reveal">Facebook</a>, <a href="#" class="reveal">Twitter</a>, <a href="#" class="reveal">Instagram</a>, <a href="#" class="reveal">LinkedIn</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3 class="reveal">About PesaDownload</h3>
+                    <p class="text-sm reveal">PesaDownload offers fast and secure Mpesa transactions for Deriv.com, enabling seamless withdrawals and deposits in seconds.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 class="reveal">Quick Links</h3>
+                    <a href="index.html#features" class="reveal">Features</a>
+                    <a href="index.html#how-it-works" class="reveal">How It Works</a>
+                    <a href="index.html#download" class="reveal">Download</a>
+                    <a href="index.html#testimonials" class="reveal">Testimonials</a>
+                    <a href="index.html#faq" class="reveal">FAQ</a>
+                    <a href="index.html#contact" class="reveal">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h3 class="reveal">Legal</h3>
+                    <a href="privacypolicy.html" class="reveal">Privacy Policy</a>
+                    <a href="termsofuse.html" class="reveal">Terms of Use</a>
+                    <a href="index.html#faq" class="reveal">FAQ</a>
+                </div>
+                <div class="footer-column">
+                    <h3 class="reveal">Follow Us</h3>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="reveal">© 2025 PesaDownload. All rights reserved. Kenya</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/+254746216077?text=Hello%20PesaDownload%20Support,%20I%20need%20help!" target="_blank" class="whatsapp-btn" id="whatsappBtn">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuToggle = document.querySelector('header button');
+        const closeMenu = document.getElementById('closeMenu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+        });
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+
+        // Back to Top button visibility and functionality
+        const backToTop = document.getElementById('backToTop');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const ctaLeftBanner = document.getElementById('ctaLeftBanner');
+        let scrollTimeout;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+                whatsappBtn.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+                whatsappBtn.classList.remove('active');
+            }
+
+            // Hide the left CTA banner while scrolling
+            ctaLeftBanner.classList.remove('active');
+
+            // Clear any existing timeout
+            clearTimeout(scrollTimeout);
+
+            // Show the left CTA banner after scrolling stops
+            scrollTimeout = setTimeout(() => {
+                if (window.scrollY > 300) {
+                    ctaLeftBanner.classList.add('active');
+                }
+            }, 500);
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Scroll Animation with Intersection Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                }
+            );
+            reveals.forEach((element) => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
