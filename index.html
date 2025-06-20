@@ -4,19 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PesaDownload - Your Trusted Guide in Financial Moves</title>
+    <meta name="description" content="PesaDownload is your trusted guide in financial moves, offering insights, tips, and resources to help you make informed decisions.">
+    <link rel="icon" href="/Assets/icon.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .bg-primary { background-color: #8B6200; }
-        .text-primary { color: #8B6200; }
-        .border-primary { border-color: #8B6200; }
-        .hover\:bg-primary-dark:hover { background-color: #6B4A00; }
-        .app-preview { box-shadow: 0 20px 40px rgba(0,0,0,0.2); border-radius: 30px; overflow: hidden; }
-        .download-btn { transition: all 0.3s ease; }
-        .download-btn:hover { transform: translateY(-5px); }
-        .testimonial-card { transition: all 0.3s ease; }
-        .testimonial-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
-        .feature-icon { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-bottom: 1rem; }
+        /* Updated Theme Color Styling with Linear Gradient */
+        .bg-primary { 
+            background: linear-gradient(135deg, #8B6200, #6B4A00); 
+        }
+        .text-primary { 
+            color: #8B6200; /* Text remains solid color for readability */
+        }
+        .border-primary { 
+            border-color: #8B6200; 
+        }
+        .hover\:bg-primary-dark:hover { 
+            background: linear-gradient(135deg, #6B4A00, #4A3500); 
+        }
+        .app-preview { 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
+            border-radius: 30px; 
+            overflow: hidden; 
+        }
+        .download-btn { 
+            transition: all 0.3s ease; 
+            background: linear-gradient(135deg, #8B6200, #6B4A00);
+        }
+        .download-btn:hover { 
+            transform: translateY(-5px); 
+            background: linear-gradient(135deg, #6B4A00, #4A3500);
+        }
+        .testimonial-card { 
+            transition: all 0.3s ease; 
+        }
+        .testimonial-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15); 
+        }
+        .feature-icon { 
+            width: 60px; 
+            height: 60px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 50%; 
+            margin-bottom: 1rem; 
+            background: linear-gradient(135deg, #8B6200, #6B4A00);
+        }
         .hero-images-container {
             position: relative;
             width: 100%;
@@ -48,8 +83,8 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #8B6200;
+            background: linear-gradient(135deg, #8B6200, #6B4A00);
+            color: white;
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -57,11 +92,11 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
             z-index: 10;
         }
         .scroll-btn:hover {
-            background-color: rgba(255, 255, 255, 1);
+            background: linear-gradient(135deg, #6B4A00, #4A3500);
             transform: translateY(-50%) scale(1.1);
         }
         .scroll-btn.left {
@@ -95,16 +130,18 @@
         .logo-container:hover {
             transform: scale(1.05);
         }
-        .logo-container svg {
-            transition: fill 0.3s ease;
-        }
-        .logo-container:hover svg circle {
-            fill: #e08b34;
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 8px;
+            border: 2px solid #f7e2c2;
         }
         nav a {
             position: relative;
             padding-bottom: 5px;
             transition: color 0.3s ease;
+            color: white; /* Ensure text remains solid color */
         }
         nav a:hover {
             color: #f7e2c2;
@@ -154,7 +191,7 @@
             color: #8B6200;
         }
         .footer-social a {
-            background-color: #8B6200;
+            background: linear-gradient(135deg, #8B6200, #6B4A00);
             color: white;
             width: 40px;
             height: 40px;
@@ -163,10 +200,10 @@
             align-items: center;
             justify-content: center;
             margin-right: 10px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
         .footer-social a:hover {
-            background-color: #6B4A00;
+            background: linear-gradient(135deg, #6B4A00, #4A3500);
             transform: scale(1.1);
         }
         .footer-bottom {
@@ -187,6 +224,7 @@
         }
         .how-it-works-step {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(135deg, #f5f5f5, #e5e7eb);
         }
         .how-it-works-step:hover {
             transform: translateY(-5px);
@@ -296,10 +334,10 @@
                 to { transform: translateY(0); }
             }
         }
-        .back-to-top, .whatsapp-btn {
+        .back-to-top, .whatsapp-btn, .info-btn {
             position: fixed;
             right: 20px;
-            background-color: #8B6200;
+            background: linear-gradient(135deg, #8B6200, #6B4A00);
             color: white;
             width: 50px;
             height: 50px;
@@ -308,12 +346,12 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
             z-index: 999;
             opacity: 0;
             visibility: hidden;
         }
-        .back-to-top.active, .whatsapp-btn.active {
+        .back-to-top.active, .whatsapp-btn.active, .info-btn.active {
             opacity: 1;
             visibility: visible;
         }
@@ -322,14 +360,20 @@
         }
         .whatsapp-btn {
             bottom: 20px;
-            background-color: #25D366;
+            background: linear-gradient(135deg, #25D366, #20BD57);
         }
-        .back-to-top:hover, .whatsapp-btn:hover {
-            background-color: #6B4A00;
+        .info-btn {
+            bottom: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #8B6200, #6B4A00);
+        }
+        .back-to-top:hover, .info-btn:hover {
+            background: linear-gradient(135deg, #6B4A00, #4A3500);
             transform: scale(1.1);
         }
         .whatsapp-btn:hover {
-            background-color: #20BD57;
+            background: linear-gradient(135deg, #20BD57, #1AA34A);
+            transform: scale(1.1);
         }
         .reveal {
             opacity: 0;
@@ -351,6 +395,54 @@
                 transition: none;
             }
         }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .modal-content h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        .modal-content p, .modal-content li {
+            font-size: 1rem;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .modal-content ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+        }
     </style>
 </head>
 <body class="font-sans bg-gray-50">
@@ -358,7 +450,7 @@
    <!-- Left-Side CTA Banner -->
    <div class="cta-left-banner" id="ctaLeftBanner">
        <span class="small-text reveal">Fast & Secure! Try Now!</span>
-       <a href="/Assets/downloads/DownloadPesa.apk" class="bg-white text-primary font-bold rounded-full download-btn hover:bg-gray-100">
+       <a href="https://play.google.com/store/apps/details?id=com.limoman.AppPesa" class="bg-white text-primary font-bold rounded-full download-btn hover:bg-gray-100">
            Download Now <i class="fas fa-arrow-down ml-2"></i>
        </a>
    </div>
@@ -367,12 +459,7 @@
    <header class="text-white sticky top-0 z-50">
        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
            <div class="logo-container">
-               <svg width="32" height="32" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="mr-2">
-                   <circle cx="100" cy="100" r="95" fill="#d46f29"/>
-                   <circle cx="100" cy="100" r="75" fill="#e08b34"/>
-                   <circle cx="100" cy="100" r="55" fill="#c97629"/>
-                   <text x="100" y="125" text-anchor="middle" font-size="90" font-family="Georgia, serif" fill="#f7e2c2" font-weight="bold">P</text>
-               </svg>
+               <img src="/Assets/icon.png" alt="PesaDownload Logo" class="logo-img">
                <h1 class="text-2xl font-bold reveal">PesaDownload</h1>
            </div>
            <nav class="hidden md:flex space-x-8">
@@ -394,7 +481,7 @@
                <h2 class="text-4xl md:text-5xl font-bold mb-6 reveal">Your Trusted Guide in Financial Moves and Money Transfers</h2>
                <p class="text-xl mb-8 reveal">Empowering You with Quick, Seamless, and Secure Solutions.</p>
                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
-                   <a href="/Assets/downloads/DownloadPesa.apk" class="bg-white text-primary font-bold py-3 px-6 rounded-full text-center download-btn hover:bg-gray-100">
+                   <a href="https://play.google.com/store/apps/details?id=com.limoman.AppPesa" class="bg-white text-primary font-bold py-3 px-6 rounded-full text-center download-btn hover:bg-gray-100">
                        Download Now <i class="fas fa-arrow-down ml-2"></i>
                    </a>
                    <a href="#" target="_blank" class="border-2 border-white text-white font-bold py-3 px-6 rounded-full text-center download-btn hover:bg-white hover:text-primary">
@@ -429,28 +516,28 @@
            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 reveal">Why Choose PesaDownload?</h2>
            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                <div class="bg-gray-50 p-8 rounded-xl text-center">
-                   <div class="feature-icon bg-primary text-white mx-auto">
+                   <div class="feature-icon text-white mx-auto">
                        <i class="fas fa-exchange-alt text-2xl"></i>
                    </div>
                    <h3 class="text-xl font-bold mb-4 text-gray-800 reveal">Instant Transactions</h3>
                    <p class="text-gray-600 reveal">Withdraw or deposit funds to your Deriv account in seconds through Mpesa. No delays, just instant financial freedom.</p>
                </div>
                <div class="bg-gray-50 p-8 rounded-xl text-center">
-                   <div class="feature-icon bg-primary text-white mx-auto">
+                   <div class="feature-icon text-white mx-auto">
                        <i class="fas fa-shield-alt text-2xl"></i>
                    </div>
                    <h3 class="text-xl font-bold mb-4 text-gray-800 reveal">Bank-Level Security</h3>
                    <p class="text-gray-600 reveal">Your transactions are protected with advanced encryption and security protocols, ensuring your money is always safe.</p>
                </div>
                <div class="bg-gray-50 p-8 rounded-xl text-center">
-                   <div class="feature-icon bg-primary text-white mx-auto">
+                   <div class="feature-icon text-white mx-auto">
                        <i class="fas fa-users text-2xl"></i>
                    </div>
                    <h3 class="text-xl font-bold mb-4 text-gray-800 reveal">P2P Transactions</h3>
                    <p class="text-gray-600 reveal">Easily transfer funds between Deriv users with our peer-to-peer transaction system.</p>
                </div>
                <div class="bg-gray-50 p-8 rounded-xl text-center">
-                   <div class="feature-icon bg-primary text-white mx-auto">
+                   <div class="feature-icon text-white mx-auto">
                        <i class="fas fa-chart-line text-2xl"></i>
                    </div>
                    <h3 class="text-xl font-bold mb-4 text-gray-800 reveal">MT5 Trading Integration</h3>
@@ -466,21 +553,21 @@
            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 reveal">How It Works</h2>
            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                <div class="how-it-works-step bg-white p-6 rounded-xl text-center">
-                   <div class="feature-icon bg-primary text-white mx-auto mb-4">
+                   <div class="feature-icon text-white mx-auto mb-4">
                        <i class="fas fa-download text-2xl"></i>
                    </div>
                    <h3 class="text-xl font-bold mb-2 text-gray-800 reveal">Step 1: Download the App</h3>
-                   <p class="text-gray-600 reveal">Get PesaDownload from the Google Play Store or our secure direct download link.</p>
+                   <p class="text-gray-600 reveal">Get PesaDownload from the Google Play Store.</p>
                </div>
                <div class="how-it-works-step bg-white p-6 rounded-xl text-center">
-                   <div class="feature-icon bg-primary text-white mx-auto mb-4">
+                   <div class="feature-icon text-white mx-auto mb-4">
                        <i class="fas fa-link text-2xl"></i>
                    </div>
                    <h3 class="text-xl font-bold mb-2 text-gray-800 reveal">Step 2: Connect Deriv</h3>
                    <p class="text-gray-600 reveal">Link your Deriv account securely within the app for instant transactions.</p>
                </div>
                <div class="how-it-works-step bg-white p-6 rounded-xl text-center">
-                   <div class="feature-icon bg-primary text-white mx-auto mb-4">
+                   <div class="feature-icon text-white mx-auto mb-4">
                        <i class="fas fa-exchange-alt text-2xl"></i>
                    </div>
                    <h3 class="text-xl font-bold mb-2 text-gray-800 reveal">Step 3: Transact Instantly</h3>
@@ -488,7 +575,7 @@
                </div>
            </div>
            <div class="text-center mt-8">
-               <a href="/Assets/downloads/DownloadPesa.apk" class="bg-primary text-white font-bold py-3 px-6 rounded-full download-btn hover:bg-primary-dark">
+               <a href="https://play.google.com/store/apps/details?id=com.limoman.AppPesa" class="text-white font-bold py-3 px-6 rounded-full download-btn">
                    Get Started Now <i class="fas fa-arrow-right ml-2"></i>
                </a>
            </div>
@@ -499,29 +586,18 @@
    <section id="download" class="py-16 bg-white">
        <div class="container mx-auto px-4">
            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 reveal">Download PesaDownload</h2>
-           <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
-               <div class="bg-gray-50 p-8 rounded-xl text-center w-full md:w-1/2 max-w-md">
-                   <div class="mb-6">
-                       <i class="fas fa-download text-5xl text-primary"></i>
-                   </div>
-                   <h3 class="text-xl font-bold mb-4 text-gray-800 reveal">Direct Download</h3>
-                   <p class="text-gray-600 mb-6 reveal">Get the latest version of PesaDownload directly from our secure servers.</p>
-                   <a href="/Assets/downloads/DownloadPesa.apk" class="inline-block">
-                       <button class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full download-btn">
-                           Download APK <i class="fas fa-arrow-down ml-2"></i>
-                       </button>
-                   </a>
-                   <p class="text-sm text-gray-500 mt-2 reveal">Version 1.0.0</p>
-               </div>
-               <div class="bg-gray-50 p-8 rounded-xl text-center w-full md:w-1/2 max-w-md">
+           <div class="flex justify-center">
+               <div class="bg-gray-50 p-8 rounded-xl text-center w-full max-w-md">
                    <div class="mb-6">
                        <i class="fab fa-google-play text-5xl text-primary"></i>
                    </div>
                    <h3 class="text-xl font-bold mb-4 text-gray-800 reveal">Google Play Store</h3>
                    <p class="text-gray-600 mb-6 reveal">Download PesaDownload from the official Google Play Store for automatic updates.</p>
-                   <button class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full download-btn">
-                       Get on Play Store <i class="fab fa-google-play ml-2"></i>
-                   </button>
+                   <a href="https://play.google.com/store/apps/details?id=com.limoman.AppPesa" class="inline-block">
+                       <button class="text-white font-bold py-3 px-8 rounded-full download-btn">
+                           Get on Play Store <i class="fab fa-google-play ml-2"></i>
+                       </button>
+                   </a>
                </div>
            </div>
        </div>
@@ -683,16 +759,16 @@
                    <div class="mt-8">
                        <h4 class="font-bold text-gray-800 mb-4 reveal">Follow Us</h4>
                        <div class="flex space-x-4">
-                           <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark">
+                           <a href="#" class="w-10 h-10 rounded-full text-white flex items-center justify-center hover:bg-primary-dark">
                                <i class="fab fa-facebook-f"></i>
                            </a>
-                           <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark">
+                           <a href="#" class="w-10 h-10 rounded-full text-white flex items-center justify-center hover:bg-primary-dark">
                                <i class="fab fa-twitter"></i>
                            </a>
-                           <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark">
+                           <a href="#" class="w-10 h-10 rounded-full text-white flex items-center justify-center hover:bg-primary-dark">
                                <i class="fab fa-instagram"></i>
                            </a>
-                           <a href="#" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark">
+                           <a href="#" class="w-10 h-10 rounded-full text-white flex items-center justify-center hover:bg-primary-dark">
                                <i class="fab fa-linkedin-in"></i>
                            </a>
                        </div>
@@ -713,7 +789,7 @@
                            <label for="message" class="block text-gray-700 mb-2 reveal">Message</label>
                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary"></textarea>
                        </div>
-                       <button class="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-6 rounded-full w-full">
+                       <button class="text-white font-bold py-3 px-6 rounded-full w-full download-btn">
                            Send Message <i class="fas fa-paper-plane ml-2"></i>
                        </button>
                    </div>
@@ -723,11 +799,11 @@
    </section>
 
    <!-- Call to Action Banner -->
-   <section class="cta-banner">
+   <section class="cta-banner bg-primary">
        <div class="container mx-auto px-4">
            <h2 class="text-3xl font-bold mb-4 reveal">Ready to Start Trading?</h2>
            <p class="text-lg mb-6 reveal">Join thousands of users and experience seamless Mpesa transactions with PesaDownload today!</p>
-           <a href="/Assets/downloads/DownloadPesa.apk" class="bg-white text-primary font-bold py-3 px-8 rounded-full download-btn hover:bg-gray-100">
+           <a href="https://play.google.com/store/apps/details?id=com.limoman.AppPesa" class="bg-white text-primary font-bold py-3 px-8 rounded-full download-btn hover:bg-gray-100">
                Download Now <i class="fas fa-arrow-down ml-2"></i>
            </a>
        </div>
@@ -798,6 +874,26 @@
        <i class="fab fa-whatsapp"></i>
    </a>
 
+   <!-- Info Button -->
+   <div class="info-btn" id="infoBtn" onclick="openModal()">
+       <i class="fas fa-info"></i>
+   </div>
+
+   <!-- Info Modal -->
+   <div class="modal" id="infoModal">
+       <div class="modal-content">
+           <span class="close-modal" onclick="closeModal()">&times;</span>
+           <h3>Important Risk Information</h3>
+           <p>Deriv offers complex derivatives, such as options and contracts for difference ("CFDs"). These products may not be suitable for all clients, and trading them puts you at risk.</p>
+           <p>Please make sure that you understand the following risks before trading Deriv products:</p>
+           <ul>
+               <li>You may lose some or all of the money you invest in the trade.</li>
+               <li>If your trade involves currency conversion, exchange rates will affect your profit and loss.</li>
+           </ul>
+           <p>You should never trade with borrowed money or with money that you cannot afford to lose.</p>
+       </div>
+   </div>
+
    <!-- Scripts -->
    <script>
        // Mobile menu toggle
@@ -839,16 +935,19 @@
            icon.classList.toggle('fa-chevron-up');
        }
 
-       // Back to Top button visibility and functionality
+       // Back to Top and Info button visibility
        const backToTop = document.getElementById('backToTop');
        const whatsappBtn = document.getElementById('whatsappBtn');
+       const infoBtn = document.getElementById('infoBtn');
        window.addEventListener('scroll', () => {
            if (window.scrollY > 300) {
                backToTop.classList.add('active');
                whatsappBtn.classList.add('active');
+               infoBtn.classList.add('active');
            } else {
                backToTop.classList.remove('active');
                whatsappBtn.classList.remove('active');
+               infoBtn.classList.remove('active');
            }
        });
 
@@ -868,6 +967,22 @@
                    ctaLeftBanner.classList.add('active');
                }
            }, 500);
+       });
+
+       // Modal functions
+       function openModal() {
+           document.getElementById('infoModal').style.display = 'flex';
+       }
+
+       function closeModal() {
+           document.getElementById('infoModal').style.display = 'none';
+       }
+
+       // Close modal when clicking outside
+       document.getElementById('infoModal').addEventListener('click', (e) => {
+           if (e.target === document.getElementById('infoModal')) {
+               closeModal();
+           }
        });
 
        // Scroll Animation with Intersection Observer
